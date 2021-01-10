@@ -21,13 +21,15 @@ print(df_train[numerical_feats].columns)
 print("*"*80)
 print(df_train[categorical_feats].columns)
 
+
+print(df_train.columns)
 # 변수명을 확인해봅니다.
 
 df_train.head()
 df_test.head()
 df_submit.head()
 
-df_train.dtypes
+df_train.info()
 
 df_train.describe()
 df_test.describe()

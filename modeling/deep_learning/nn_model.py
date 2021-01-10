@@ -1,6 +1,8 @@
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout
 from keras.optimizers import Adam, SGD
+from tensorflow.keras.callbacks import EarlyStopping
+
 
 nn_model = Sequential()
 nn_model.add(Dense(32,activation='relu',input_shape=(14,)))
@@ -15,11 +17,13 @@ Loss = 'binary_crossentropy'
 nn_model.compile(loss=Loss,optimizer=Adam(),metrics=['accuracy'])
 nn_model.summary()
 
+es = EarlyStopping(monitor='val_loss', mode='min', verbose=1, patience=20)
 history = nn_model.fit(X_tr,y_tr,
                     batch_size=64,
                     epochs=500,
                     validation_data=(X_vld, y_vld),
-                    verbose=1)
+                    verbose=1, 
+                    callbacks = [es]))
                     
 hists = [history]
 hist_df = pd.concat([pd.DataFrame(hist.history) for hist in hists], sort=True)
