@@ -3,7 +3,7 @@ df_train.head()
 
 # 잘 불러졌는지 확인해봅니다.
 
-df_train.shape, df_test.shape
+df_train.shape, df_test.shape, df_submit.shape
 
 # train 데이터는 1460개의 데이터와 81개의 feature
 # test 데이터는 1459개의 데이터와 80개의 feature가 있습니다.
@@ -22,3 +22,12 @@ print("*"*80)
 print(df_train[categorical_feats].columns)
 
 # 변수명을 확인해봅니다.
+
+df_train.head()
+df_test.head()
+df_submit.head()
+
+df_train.dtypes
+
+df_train.describe()
+df_test.describe()
